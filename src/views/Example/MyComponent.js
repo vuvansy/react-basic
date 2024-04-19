@@ -21,6 +21,14 @@ class MyComponent extends React.Component {
         });
     };
 
+    //Events DOM chính là việc người dùng tương tác với giao diện web app,
+    //từ việc click button, hover text, image... cho đến nhấn ký tự keyboard.
+
+    handleClickButton = () => {
+        console.log("hit the button");
+        alert("Click Me!!");
+    };
+
     render() {
         return (
             <>
@@ -36,6 +44,11 @@ class MyComponent extends React.Component {
                     My name is: {this.state.name}
                 </div>
                 <div>My Facebook chanel: {this.state.facebook}</div>
+                <div>
+                    <button onClick={() => this.handleClickButton()}>
+                        ClickMe
+                    </button>
+                </div>
             </>
         );
     }
