@@ -9,7 +9,11 @@ class MyComponent extends React.Component {
      *Tìm hiểu: fragment
      */
 
-    //State
+    //State: Để thay đổi trạng thái ứng dụng React (được quản lý thông qua State),
+    //React cung cấp một lựa chọn đấy là sử dụng hàm setState. Bằng cách sử dụng hàm này,
+    //ứng dụng React sẽ tự động cập nhật lại State hiện tại, cũng như re-render lại giao diện của nó,
+    //giúp ứng dụng có được dữ liệu mới nhất.
+
     //key:value
     state = {
         name: "T.Break",
