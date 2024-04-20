@@ -1,5 +1,5 @@
 import React from "react";
-
+import ChildComponent from "./ChildComponent";
 class MyComponent extends React.Component {
     /**
      *JSX ==> return block (JSX sẽ trả về một khối - 1 phần tử của HTML)
@@ -68,6 +68,10 @@ class MyComponent extends React.Component {
                         onClick={(event) => this.handleSubmit(event)}
                     />
                 </form>
+
+                <ChildComponent name={"child one"} />
+                <ChildComponent name={"child tow"} />
+                <ChildComponent name={"child three"} />
             </>
         );
     }
