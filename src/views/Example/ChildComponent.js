@@ -33,11 +33,17 @@ class ChildComponent extends React.Component {
         // let age = this.props.age;
 
         //---Khai báo theo ES6 Destructuring
-        let { name, age } = this.props;
+        let { name, age, arrJobs } = this.props;
         return (
             <>
-                <div>
-                    Child Component Name: {name} - {age}
+                <div className="job-list">
+                    {arrJobs.map((item) => {
+                        return (
+                            <div key={item.id}>
+                                {item.title}- {item.salary}
+                            </div>
+                        );
+                    })}
                 </div>
             </>
         );

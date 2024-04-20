@@ -18,6 +18,11 @@ class MyComponent extends React.Component {
     state = {
         firstName: "",
         lastName: "",
+        arrJobs: [
+            { id: "abcJob1", title: "Developer", salary: "500 $" },
+            { id: "abcJob2", title: "Testers", salary: "400 $" },
+            { id: "abcJob3", title: "Project managers", salary: "1000 $" },
+        ],
     };
 
     //Events DOM chính là việc người dùng tương tác với giao diện web app,
@@ -69,7 +74,11 @@ class MyComponent extends React.Component {
                     />
                 </form>
 
-                <ChildComponent name={"Văn Sỹ"} age={"25"} />
+                <ChildComponent
+                    name={this.state.firstName}
+                    age={"25"}
+                    arrJobs={this.state.arrJobs}
+                />
             </>
         );
     }
