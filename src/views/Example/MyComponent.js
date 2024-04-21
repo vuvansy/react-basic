@@ -24,6 +24,13 @@ class MyComponent extends React.Component {
         ],
     };
 
+    addNewJob = (job) => {
+        console.log("check : ", job);
+        this.setState({
+            arrJobs: [...this.state.arrJobs, job],
+        });
+    };
+
     //Events DOM chính là việc người dùng tương tác với giao diện web app,
     //từ việc click button, hover text, image... cho đến nhấn ký tự keyboard.
 
@@ -31,7 +38,7 @@ class MyComponent extends React.Component {
         console.log(">>>> Call render: ", this.state);
         return (
             <>
-                <AddComponent />
+                <AddComponent addNewJob={this.addNewJob} />
                 <ChildComponent arrJobs={this.state.arrJobs} />
             </>
         );

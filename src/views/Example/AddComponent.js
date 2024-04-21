@@ -2,13 +2,13 @@ import React from "react";
 
 class AddComponent extends React.Component {
     state = {
-        titleJob: "",
+        title: "",
         salary: "",
     };
 
     handleChangeTitleJob = (event) => {
         this.setState({
-            titleJob: event.target.value,
+            title: event.target.value,
         });
     };
 
@@ -20,7 +20,24 @@ class AddComponent extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        //Bắt lỗi validation form
+        if (!this.state.title || !this.state.salary) {
+            alert("Bạn cần nhập đầy đủ thông tin");
+            return;
+        }
         console.log(">>>> Check Data input: ", this.state);
+        //Add dữ liệu
+        this.props.addNewJob({
+            id: Math.floor(Math.random() * 1001),
+            title: this.state.title,
+            salary: this.state.salary,
+        });
+
+        //Xử lý sau khi add thành công
+        this.setState({
+            title: "",
+            salary: "",
+        });
     };
 
     render() {
@@ -30,7 +47,7 @@ class AddComponent extends React.Component {
                 <br />
                 <input
                     type="text"
-                    value={this.state.titleJob}
+                    value={this.state.title}
                     onChange={(event) => this.handleChangeTitleJob(event)}
                 />
                 <br />
