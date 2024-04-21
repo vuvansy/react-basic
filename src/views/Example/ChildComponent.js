@@ -1,53 +1,72 @@
 import React from "react";
 
-//Stateless (Function component) và StateFull (Class component) là hai loại component được sử dụng phổ biến nhất của React.
 //==== Class component ====
-// class ChildComponent extends React.Component {
-//     //re-render
-//     render() {
-//         //=> Props (viết tắt của Properties) là cách Child Component có thể Inherit (kế thừa) lại data từ Parent Component truyền xuống.
-//         //Với việc sử dụng props, luồng dữ liệu sẽ được truyền theo kiểu Top to Bottom (truyền từ trên xuống dưới).
+class ChildComponent extends React.Component {
+    state = {
+        showJobs: false,
+    };
 
-//         console.log(">>>> Check props: ", this.props);
-//         //---Cách khai báo Js
-//         // let name = this.props.name;
-//         // let age = this.props.age;
-
-//         //---Khai báo theo ES6 Destructuring
-//         let { arrJobs } = this.props;
-//         return (
-//             <>
-//                 <div className="job-list">
-//                     {arrJobs.map((item) => {
-//                         return (
-//                             <div key={item.id}>
-//                                 {item.title}- {item.salary}
-//                             </div>
-//                         );
-//                     })}
-//                 </div>
-//             </>
-//         );
-//     }
-// }
+    //Hàm xử lý xự kiện
+    handleShowHide = () => {
+        this.setState({
+            showJobs: !this.state.showJobs,
+        });
+    };
+    //re-render
+    render() {
+        //---Khai báo theo ES6 Destructuring
+        let { arrJobs } = this.props;
+        let showJobs = this.state.showJobs;
+        let check = showJobs === true ? "showJobs = true" : "showJobs = false";
+        console.log(">>>>> check condition: ", showJobs);
+        return (
+            <>
+                {showJobs === false ? (
+                    <div>
+                        <button onClick={() => this.handleShowHide()}>
+                            Show
+                        </button>
+                    </div>
+                ) : (
+                    <>
+                        <div className="job-list">
+                            {arrJobs.map((item) => {
+                                return (
+                                    <div key={item.id}>
+                                        {item.title}- {item.salary}$
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div>
+                            <button onClick={() => this.handleShowHide()}>
+                                Hide
+                            </button>
+                        </div>
+                    </>
+                )}
+            </>
+        );
+    }
+}
 
 //==== Function component ====
 //Dùng với hook
-const ChildComponent = (props) => {
-    let { arrJobs } = props;
-    return (
-        <>
-            <div className="job-list">
-                {arrJobs.map((item) => {
-                    return (
-                        <div key={item.id}>
-                            {item.title}- {item.salary}
-                        </div>
-                    );
-                })}
-            </div>
-        </>
-    );
-};
+// const ChildComponent = (props) => {
+//     let { arrJobs } = props;
+//     return (
+//         <>
+//             <div className="job-list">
+//                 {arrJobs.map((item) => {
+//                     return (
+//                         <div key={item.id}>
+//                             {item.title} - {item.salary}$
+//                         </div>
+//                     );
+//                 })}
+//             </div>
+//         </>
+//     );
+// };
 
 export default ChildComponent;
