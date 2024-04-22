@@ -1,4 +1,5 @@
 import React from "react";
+import "./Demo.scss";
 
 //==== Class component ====
 class ChildComponent extends React.Component {
@@ -12,6 +13,12 @@ class ChildComponent extends React.Component {
             showJobs: !this.state.showJobs,
         });
     };
+
+    handleOnclickDelete = (job) => {
+        console.log("handleOnclickDelete :", job);
+        this.props.deleteAJob(job);
+    };
+
     //re-render
     render() {
         //---Khai báo theo ES6 Destructuring
@@ -23,7 +30,10 @@ class ChildComponent extends React.Component {
             <>
                 {showJobs === false ? (
                     <div>
-                        <button onClick={() => this.handleShowHide()}>
+                        <button
+                            className="btn-show"
+                            onClick={() => this.handleShowHide()}
+                        >
                             Show
                         </button>
                     </div>
@@ -33,7 +43,14 @@ class ChildComponent extends React.Component {
                             {arrJobs.map((item) => {
                                 return (
                                     <div key={item.id}>
-                                        {item.title}- {item.salary}$
+                                        {item.title}- {item.salary}$ <></>{" "}
+                                        <span
+                                            onClick={() =>
+                                                this.handleOnclickDelete(item)
+                                            }
+                                        >
+                                            x
+                                        </span>
                                     </div>
                                 );
                             })}
